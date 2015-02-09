@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="todo">
+<head>
+	<meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>todo</title>
+	<script src="lib/angular/angular.min.js"></script>
+	<script src="js/todo.js"></script>
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<style>
+	ul{ list-style: none;padding:0;}
+	.done{ text-decoration: line-through; color:#CCC;}
+	.container{max-width: 400px;}
+	</style>
+</head>
+<body>
+	<div class="container panel panel-default">
+		<div class="panel-body" ng-controller="todoController">
+
+			<h2>todos</h2>
+			<p>{{remaining()}} of {{todos.length}} remaining [ <a href="" ng-click="clearCompleted()">archive</a> ]</p>
+
+			<ul>
+				<li ng-repeat="todo in todos">
+					<input type="checkbox" ng-model="todo.done">
+					<span ng-class="{'done':todo.done}">{{todo.title}}</span>
+				</li>
+			</ul>
+
+
+			<form name="frm" ng-submit="addTodo()">
+				<input type="text" name="newTodo" ng-model="newTodo" required placeholder="add new todo">
+				<button class="btn btn-default" ng-disable="frm.$invalid">Go</button>
+			</form>
+			
+		</div>
+	</div>
+</body>
+</html>
