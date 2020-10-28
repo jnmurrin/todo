@@ -1,2 +1,2 @@
 # todo
-a simple todo app build with angular.js
+a simple todo webapp build with angular.js
